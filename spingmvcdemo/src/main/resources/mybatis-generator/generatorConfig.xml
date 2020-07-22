@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <properties resource="mybatis-generator\generator.properties"/>
+
+    <classPathEntry
+            location="D:\RepositoryLocal\mysql\mysql-connector-java\5.1.49\mysql-connector-java-5.1.49.jar" />
+
+<!--    我们常用的 xml 配置属于 MyBatis3 风格，官方认为这种风格已经过时），也支持新版的 MyBatis3DynamicSql 的风格（MyBatis3DynamicSql 风格为官方推荐-->
+<!--    <context id="context1" targetRuntime="MyBatis3">-->
+    <context id="context1">
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${driver}"
+                        connectionURL="${url}"
+                        userId="${username}"
+                        password="${password}" />
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${modelProject}" >
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="${sqlPackage}" targetProject="${sqlProject}" >
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 生成Dao类存放位置 -->
+        <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${modelProject}" type="XMLMAPPER"  >
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+<!--        <javaModelGenerator targetPackage="${modelPackage}"-->
+<!--                            targetProject="${modelProject}" />-->
+
+<!--        <sqlMapGenerator targetPackage="${sqlPackage}" targetProject="${sqlProject}" />-->
+<!--        <javaClientGenerator targetPackage="${mapperPackage}"-->
+<!--                             targetProject="${mapperProject}" type="XMLMAPPER" />-->
+
+        <!-- 如果需要通配所有表 直接用sql的通配符    %即可 -->
+        <table schema="tests001" tableName="%" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <!-- table可以有多个,每个数据库中的表都可以写一个table，tableName表示要匹配的数据库表,也可以在tableName属性中通过使用%通配符来匹配所有数据库表,只有匹配的表才会自动生成文件 -->
+        <!--如果想生成一个表则tableName="table_name"-->
+<!--        <table tableName="redlist"-->
+<!--               enableCountByExample="true"-->
+<!--               enableUpdateByExample="true"-->
+<!--               enableDeleteByExample="true"-->
+<!--               enableSelectByExample="true"-->
+<!--               selectByExampleQueryId="true">-->
+<!--            <property name="useActualColumnNames" value="false" />-->
+<!--            &lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+<!--            <generatedKey column="red_id" sqlStatement="Mysql" identity="true" />-->
+<!--        </table>-->
+
+    </context>
+</generatorConfiguration>
