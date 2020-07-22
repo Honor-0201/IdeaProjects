@@ -1,0 +1,5 @@
+com\lwh\mybatisgenerator\mapper\KeypersonAirportMapper.class
+com\lwh\mybatisgenerator\mapper\KeypersonAirlineMapper.class
+com\lwh\mybatisgenerator\MybatisGeneratorApplication.class
+com\lwh\mybatisgenerator\domain\KeypersonAirline.class
+com\lwh\mybatisgenerator\domain\KeypersonAirport.class

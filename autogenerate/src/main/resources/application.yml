@@ -1,0 +1,45 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    username: root
+    #    password: Xa_20W-km@0205!2569
+    password: root
+    #    url: jdbc:mysql://192.168.0.224:7788/yunjing_wificloud?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/testboot?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 20
+      minIdle: 20
+      maxActive: 1000
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+###日志输出
+logging:
+  level:
+    root : warn
+    com.cxyxs.mybatisplus.dao: trace
+  ###控制台日志输出格式
+  pattern:
+    console: '%p%m%n'
+mybatis-plus:
+  mapper-locations: classpath*:/mappers/*.xml
+  global-config:
+    db-config:
+      ###逻辑未删除的值
+      logic-not-delete-value: 0
+      ###逻辑已删除的值
+      logic-delete-value: 1
+
+  ####扫描swagger注解
+  swagger:
+    base-package: com.lxk.autogenerate
+

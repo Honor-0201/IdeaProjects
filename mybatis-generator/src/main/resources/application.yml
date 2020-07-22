@@ -1,0 +1,37 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: mybatis-generator
+
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+
+  datasource:
+    username: root
+    password: Xa_20W-km@0205!2569
+    url: jdbc:mysql://192.168.0.117:3306/yunjing_wificloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+#    jdbc:mysql://192.168.0.117:3306/yunjing_wificloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+     initialSize: 20
+     minIdle: 20
+     maxActive: 1000
+     maxWait: 60000
+     timeBetweenEvictionRunsMillis: 60000
+     minEvictableIdleTimeMillis: 300000
+     validationQuery: SELECT 1 FROM DUAL
+     testWhileIdle: true
+     testOnBorrow: false
+     testOnReturn: false
+     poolPreparedStatements: true
+
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:/mapper/*.xml
+
